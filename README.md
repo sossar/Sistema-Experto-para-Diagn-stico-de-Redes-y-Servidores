@@ -2,11 +2,9 @@
 
 Este proyecto implementa un Sistema Experto basado en reglas con encadenamiento hacia adelante (Forward Chaining). Utiliza una interfaz gráfica interactiva para facilitar el diagnóstico de fallos físicos y lógicos en infraestructura de redes, permitiendo resolución de conflictos mediante especificidad y prioridad.
 
-## 👥 Integrantes
+## 👥 Integrante:
 * Samuel Alejandro Ossa Rendón
-* Julián David Hurtado Pineda
-* Oscar David Gómez Mosquera
-
+  
 *Universidad Nacional de Colombia - Sede Manizales*
 *Administración de Sistemas Informáticos*
 
