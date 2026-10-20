@@ -1,0 +1,89 @@
+[
+    {
+        "nombre": "Ataque DNS Inicial",
+        "antecedentes": ["caida_red", "perdida_datos"],
+        "consecuentes": ["ataque_dns"]
+    },
+    {
+        "nombre": "Envenenamiento Cache DNS",
+        "antecedentes": ["ataque_dns", "lentitud_navegacion"],
+        "consecuentes": ["envenenamiento_cache_dns"],
+        "recomendacion": "Limpiar la caché DNS del servidor (ipconfig /flushdns o systemd-resolve --flush-caches) y contactar al ISP."
+    },
+    {
+        "nombre": "Falla de Comunicación",
+        "antecedentes": ["ping_timeout", "servidor_no_responde"],
+        "consecuentes": ["falla_comunicacion_servidor"]
+    },
+    {
+        "nombre": "Falla de Energía en Switch",
+        "antecedentes": ["falla_comunicacion_servidor", "luces_switch_apagadas"],
+        "consecuentes": ["falla_energia_switch"],
+        "accion": "alerta_energia",
+        "prioridad": 90,
+        "recomendacion": "Verificar la UPS del rack y revisar que el cable de poder principal esté conectado."
+    },
+    {
+        "nombre": "Falla Física de Red",
+        "antecedentes": ["falla_comunicacion_servidor", "luces_switch_encendidas"],
+        "consecuentes": ["posible_falla_cableado"],
+        "recomendacion": "Revisar integridad del cableado UTP/Fibra y probar cambiando de puerto en el switch."
+    },
+    {
+        "nombre": "Congestión de Red",
+        "antecedentes": ["alta_latencia", "perdida_paquetes"],
+        "consecuentes": ["congestion_red"]
+    },
+    {
+        "nombre": "Saturación por Horario",
+        "antecedentes": ["congestion_red", "horario_pico"],
+        "consecuentes": ["saturacion_ancho_banda"],
+        "recomendacion": "Implementar políticas de QoS (Calidad de Servicio) para priorizar el tráfico crítico durante horas pico."
+    },
+    {
+        "nombre": "Posible Ataque DDoS",
+        "antecedentes": ["congestion_red", "trafico_anomalo"],
+        "consecuentes": ["posible_ataque_ddos"]
+    },
+    {
+        "nombre": "Ataque DDoS Confirmado",
+        "antecedentes": ["posible_ataque_ddos", "multiples_peticiones_misma_ip"],
+        "consecuentes": ["ataque_ddos_confirmado"],
+        "accion": "alerta_ddos",
+        "prioridad": 100,
+        "recomendacion": "Activar protección Anti-DDoS en el Firewall/WAF y bloquear las IPs de origen anómalo."
+    },
+    {
+        "nombre": "Falla en Servidor Web",
+        "antecedentes": ["error_500", "pagina_no_carga"],
+        "consecuentes": ["falla_servidor_web"]
+    },
+    {
+        "nombre": "Sobrecarga de Servidor",
+        "antecedentes": ["falla_servidor_web", "uso_cpu_100"],
+        "consecuentes": ["sobrecarga_recursos_servidor"],
+        "recomendacion": "Reiniciar el servicio web (Apache/Nginx) y considerar escalar los recursos de CPU/RAM del servidor."
+    },
+    {
+        "nombre": "Falla en Base de Datos",
+        "antecedentes": ["falla_servidor_web", "base_datos_inactiva"],
+        "consecuentes": ["falla_conexion_bd"]
+    },
+    {
+        "nombre": "Bloqueo de Firewall a BD",
+        "antecedentes": ["falla_conexion_bd", "puerto_3306_cerrado"],
+        "consecuentes": ["firewall_bloqueando_bd"],
+        "recomendacion": "Revisar las reglas de Iptables/Firewall y asegurar que el puerto 3306 (MySQL) o 5432 (PostgreSQL) esté abierto."
+    },
+    {
+        "nombre": "Falla Autenticación AD",
+        "antecedentes": ["usuarios_no_loguean", "error_credenciales"],
+        "consecuentes": ["falla_autenticacion_ad"]
+    },
+    {
+        "nombre": "Desincronización de Tiempo NTP",
+        "antecedentes": ["falla_autenticacion_ad", "reloj_servidor_desincronizado"],
+        "consecuentes": ["problema_sincronizacion_ntp"],
+        "recomendacion": "Forzar actualización del servicio NTP (Network Time Protocol) contra un servidor de hora global confiable."
+    }
+]

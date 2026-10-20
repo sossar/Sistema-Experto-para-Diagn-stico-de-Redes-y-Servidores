@@ -1,0 +1,13 @@
+CASOS DE ESTUDIO PARA PROBAR EL SISTEMA EXPERTO
+
+Caso 1: Comprobación de Encadenamiento (Envenenamiento Caché DNS)
+- Síntomas a seleccionar: caida_red, perdida_datos, lentitud_navegacion.
+- Resultado esperado: El sistema deduce "ataque_dns" y lo encadena para deducir "envenenamiento_cache_dns". Recomienda limpiar la caché.
+
+Caso 2: Comprobación de Resolución de Conflictos (DDoS vs Servidor Web)
+- Síntomas a seleccionar: congestion_red, trafico_anomalo, multiples_peticiones_misma_ip, error_500, pagina_no_carga.
+- Resultado esperado: El sistema detecta fallas web, pero le da PRIORIDAD 100 al Ataque DDoS, ejecutando su alerta crítica primero.
+
+Caso 3: Comprobación de Regla Física (Falla de Energía)
+- Síntomas a seleccionar: ping_timeout, servidor_no_responde, luces_switch_apagadas.
+- Resultado esperado: Deduce falla de comunicación, luego encadena a falla de energía y recomienda revisar la UPS del rack.
